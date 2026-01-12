@@ -1,0 +1,22 @@
+:root {
+  --color-brand-50: 238 242 255;
+  --color-brand-100: 224 231 255;
+  --color-brand-500: 99 102 241;
+  --color-brand-700: 67 56 202;
+  --color-surface-0: 255 255 255;
+  --color-surface-50: 248 250 252;
+  --color-surface-100: 241 245 249;
+  --color-text-primary: 15 23 42;
+  --color-text-secondary: 71 85 105;
+  --font-inter: 'Inter';
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface-0: 15 23 42;
+    --color-surface-50: 30 41 59;
+    --color-surface-100: 51 65 85;
+    --color-text-primary: 248 250 252;
+    --color-text-secondary: 203 213 225;
+  }
+}
