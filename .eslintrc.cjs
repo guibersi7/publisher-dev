@@ -1,0 +1,9 @@
+module.exports = {
+  root: true,
+  extends: ["next/core-web-vitals", "prettier"],
+  plugins: ["prettier"],
+  rules: {
+    "prettier/prettier": ["error"],
+    "@next/next/no-html-link-for-pages": "off"
+  }
+};
