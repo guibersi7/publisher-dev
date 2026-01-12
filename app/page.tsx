@@ -1,3 +1,5 @@
+import ApiKeyManager from '@/components/ApiKeyManager';
+import ClientCounter from '@/components/ClientCounter';
 import PublisherStudio from '@/components/PublisherStudio';
 
 export default function HomePage() {
@@ -16,6 +18,17 @@ export default function HomePage() {
         </p>
       </section>
 
+      <section className="grid gap-6 rounded-3xl border border-brand-100 bg-surface-50 p-6">
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold">Padrão client component</h2>
+          <p className="text-text-secondary">
+            Componentes client ficam explícitos com a diretiva <code>'use client'</code>.
+          </p>
+        </div>
+        <ClientCounter />
+      </section>
+
+      <ApiKeyManager />
       <PublisherStudio />
     </main>
   );
