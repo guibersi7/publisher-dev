@@ -1,0 +1,6 @@
+module.exports = {
+  extends: ["next/core-web-vitals", "prettier"],
+  rules: {
+    "react/jsx-curly-brace-presence": ["error", { "props": "never", "children": "never" }]
+  }
+};

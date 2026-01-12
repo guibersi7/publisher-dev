@@ -1,0 +1,16 @@
+node_modules
+.next
+.env
+.env.local
+.env.*.local
+out
+coverage
+playwright-report
+
+# Prisma
+prisma/migrations
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
