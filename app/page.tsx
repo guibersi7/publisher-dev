@@ -1,3 +1,4 @@
+import ApiKeyManager from '@/components/ApiKeyManager';
 import ClientCounter from '@/components/ClientCounter';
 
 export default function HomePage() {
@@ -25,6 +26,8 @@ export default function HomePage() {
         </div>
         <ClientCounter />
       </section>
+
+      <ApiKeyManager />
     </main>
   );
 }
