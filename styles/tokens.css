@@ -1,22 +1,30 @@
 :root {
-  --color-brand-50: 238 242 255;
-  --color-brand-100: 224 231 255;
-  --color-brand-500: 99 102 241;
-  --color-brand-700: 67 56 202;
-  --color-surface-0: 255 255 255;
-  --color-surface-50: 248 250 252;
-  --color-surface-100: 241 245 249;
-  --color-text-primary: 15 23 42;
-  --color-text-secondary: 71 85 105;
+  --color-brand-50: 244 241 236;
+  --color-brand-100: 232 228 222;
+  --color-brand-500: 26 24 22;
+  --color-brand-700: 18 16 14;
+  --color-surface-0: 245 242 238;
+  --color-surface-50: 236 232 227;
+  --color-surface-100: 221 216 210;
+  --color-text-primary: 25 23 21;
+  --color-text-secondary: 120 115 109;
   --font-inter: 'Inter';
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-surface-0: 15 23 42;
-    --color-surface-50: 30 41 59;
-    --color-surface-100: 51 65 85;
-    --color-text-primary: 248 250 252;
-    --color-text-secondary: 203 213 225;
+    --color-surface-0: 22 20 18;
+    --color-surface-50: 32 30 27;
+    --color-surface-100: 48 45 41;
+    --color-text-primary: 245 243 239;
+    --color-text-secondary: 176 169 160;
   }
+}
+
+:root[data-theme='dark'] {
+  --color-surface-0: 22 20 18;
+  --color-surface-50: 32 30 27;
+  --color-surface-100: 48 45 41;
+  --color-text-primary: 245 243 239;
+  --color-text-secondary: 176 169 160;
 }
