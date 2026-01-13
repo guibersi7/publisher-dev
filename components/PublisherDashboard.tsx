@@ -90,8 +90,8 @@ export default function PublisherDashboard() {
   );
 
   return (
-    <main className="min-h-screen bg-surface-0 text-text-primary">
-      <div className="flex min-h-screen w-full overflow-hidden bg-surface-0">
+    <main className="min-h-screen bg-surface-100 px-4 py-6 text-text-primary sm:px-6">
+      <div className="mx-auto flex min-h-[720px] max-w-6xl overflow-hidden rounded-[32px] border border-slate-200 bg-surface-0 shadow-sm">
         <aside className="flex w-full max-w-[280px] flex-col border-r border-slate-100 bg-surface-50">
           <div className="px-6 pb-4 pt-6">
             <h1 className="text-xl font-semibold">Publisher Studio</h1>
@@ -105,7 +105,7 @@ export default function PublisherDashboard() {
                 return (
                   <button
                     key={tab.id}
-                    className={`flex w-full items-start rounded-2xl border px-4 py-3 text-left transition ${
+                    className={`flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition ${
                       isActive
                         ? 'border-brand-100 bg-white shadow-sm'
                         : 'border-transparent hover:border-brand-100 hover:bg-white/70'
@@ -114,6 +114,9 @@ export default function PublisherDashboard() {
                     type="button"
                     aria-pressed={isActive}
                   >
+                    <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-700">
+                      {tab.label.slice(0, 1)}
+                    </span>
                     <span>
                       <span className="block text-sm font-semibold">{tab.label}</span>
                       {tab.helper && (
