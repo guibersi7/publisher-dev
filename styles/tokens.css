@@ -13,10 +13,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-surface-0: 15 23 42;
-    --color-surface-50: 30 41 59;
-    --color-surface-100: 51 65 85;
-    --color-text-primary: 248 250 252;
-    --color-text-secondary: 203 213 225;
+    --color-surface-0: 12 10 18;
+    --color-surface-50: 24 24 31;
+    --color-surface-100: 39 39 47;
+    --color-text-primary: 244 244 245;
+    --color-text-secondary: 161 161 170;
   }
+}
+
+:root[data-theme='dark'] {
+  --color-surface-0: 12 10 18;
+  --color-surface-50: 24 24 31;
+  --color-surface-100: 39 39 47;
+  --color-text-primary: 244 244 245;
+  --color-text-secondary: 161 161 170;
 }
