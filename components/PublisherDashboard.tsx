@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 type TabKey = 'chat' | 'settings' | 'schedule' | 'services';
 
@@ -84,25 +84,15 @@ const services = [
 
 export default function PublisherDashboard() {
   const [activeTab, setActiveTab] = useState<TabKey>('chat');
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const selectedTab = useMemo(
     () => tabs.find((tab) => tab.id === activeTab),
     [activeTab]
   );
 
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDarkMode) {
-      root.setAttribute('data-theme', 'dark');
-    } else {
-      root.removeAttribute('data-theme');
-    }
-  }, [isDarkMode]);
-
   return (
-    <main className="min-h-screen bg-surface-0 text-text-primary">
-      <div className="flex min-h-screen w-full overflow-hidden bg-surface-0">
-        <aside className="flex w-full max-w-[280px] flex-col border-r border-surface-100 bg-surface-50">
+    <main className="min-h-screen bg-surface-100 px-4 py-6 text-text-primary sm:px-6">
+      <div className="mx-auto flex min-h-[720px] max-w-6xl overflow-hidden rounded-[32px] border border-slate-200 bg-surface-0 shadow-sm">
+        <aside className="flex w-full max-w-[280px] flex-col border-r border-slate-100 bg-surface-50">
           <div className="px-6 pb-4 pt-6">
             <h1 className="text-xl font-semibold">Publisher Studio</h1>
             <p className="mt-1 text-sm text-text-secondary">Automação de conteúdo</p>
@@ -115,15 +105,18 @@ export default function PublisherDashboard() {
                 return (
                   <button
                     key={tab.id}
-                    className={`flex w-full items-start rounded-2xl border px-4 py-3 text-left transition ${
+                    className={`flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition ${
                       isActive
-                        ? 'border-brand-100 bg-surface-0 shadow-sm'
-                        : 'border-transparent hover:border-brand-100 hover:bg-surface-0/70'
+                        ? 'border-brand-100 bg-white shadow-sm'
+                        : 'border-transparent hover:border-brand-100 hover:bg-white/70'
                     }`}
                     onClick={() => setActiveTab(tab.id)}
                     type="button"
                     aria-pressed={isActive}
                   >
+                    <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-700">
+                      {tab.label.slice(0, 1)}
+                    </span>
                     <span>
                       <span className="block text-sm font-semibold">{tab.label}</span>
                       {tab.helper && (
@@ -136,29 +129,18 @@ export default function PublisherDashboard() {
             </div>
           </nav>
 
-          <div className="border-t border-surface-100 px-6 py-5">
-            <div className="flex items-center gap-3 rounded-2xl bg-surface-0 px-3 py-2 shadow-sm">
+          <div className="border-t border-slate-100 px-6 py-5">
+            <div className="flex items-center gap-3 rounded-2xl bg-white px-3 py-2 shadow-sm">
               <div className="h-10 w-10 rounded-full bg-brand-100" />
               <div>
                 <p className="text-sm font-semibold">Alan Ferreira</p>
                 <p className="text-xs text-text-secondary">alan@publisher.dev</p>
               </div>
             </div>
-            <button
-              className="mt-4 flex w-full items-center justify-between rounded-2xl border border-surface-100 bg-surface-0 px-4 py-3 text-xs font-semibold text-text-secondary"
-              onClick={() => setIsDarkMode((prev) => !prev)}
-              type="button"
-              aria-pressed={isDarkMode}
-            >
-              <span>Dark mode</span>
-              <span className="rounded-full bg-surface-50 px-3 py-1 text-[11px] font-semibold text-text-secondary">
-                {isDarkMode ? 'Ativo' : 'Inativo'}
-              </span>
-            </button>
           </div>
         </aside>
 
-          <section className="flex flex-1 flex-col bg-surface-0 px-8 py-10">
+        <section className="flex flex-1 flex-col bg-white px-8 py-10">
           <header className="flex items-center justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-text-secondary">
@@ -198,20 +180,20 @@ export default function PublisherDashboard() {
                 ].map((topic) => (
                   <span
                     key={topic}
-                    className="rounded-full border border-surface-100 bg-surface-50 px-4 py-2 text-xs font-semibold text-text-secondary"
+                    className="rounded-full border border-slate-200 bg-surface-50 px-4 py-2 text-xs font-semibold text-text-secondary"
                   >
                     {topic}
                   </span>
                 ))}
               </div>
 
-              <div className="flex flex-1 flex-col gap-4 overflow-auto rounded-3xl border border-surface-100 bg-surface-50 p-6">
+              <div className="flex flex-1 flex-col gap-4 overflow-auto rounded-3xl border border-slate-100 bg-surface-50 p-6">
                 {chatMessages.map((message) => (
                   <div
                     key={message.id}
                     className={`flex flex-col gap-1 rounded-2xl px-4 py-3 ${
                       message.author === 'Você'
-                        ? 'self-end bg-surface-0 shadow-sm'
+                        ? 'self-end bg-white shadow-sm'
                         : 'self-start bg-brand-50 text-text-primary'
                     }`}
                   >
@@ -224,7 +206,7 @@ export default function PublisherDashboard() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-3 rounded-full border border-surface-100 bg-surface-0 px-4 py-3 shadow-sm">
+              <div className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-3 shadow-sm">
                 <span className="text-sm text-text-secondary">
                   Insira sua mensagem aqui
                 </span>
@@ -240,7 +222,7 @@ export default function PublisherDashboard() {
 
           {activeTab === 'settings' && (
             <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-              <div className="space-y-6 rounded-3xl border border-surface-100 bg-surface-50 p-6">
+              <div className="space-y-6 rounded-3xl border border-slate-100 bg-surface-50 p-6">
                 <div>
                   <h3 className="text-lg font-semibold">Dados do usuário</h3>
                   <p className="text-sm text-text-secondary">
@@ -251,28 +233,28 @@ export default function PublisherDashboard() {
                   <label className="grid gap-2 text-sm font-semibold">
                     Nome completo
                     <input
-                      className="rounded-2xl border border-surface-100 bg-surface-0 px-4 py-2 text-sm"
+                      className="rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm"
                       defaultValue="Alan Ferreira"
                     />
                   </label>
                   <label className="grid gap-2 text-sm font-semibold">
                     E-mail corporativo
                     <input
-                      className="rounded-2xl border border-surface-100 bg-surface-0 px-4 py-2 text-sm"
+                      className="rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm"
                       defaultValue="alan@publisher.dev"
                     />
                   </label>
                   <label className="grid gap-2 text-sm font-semibold">
                     Cargo
                     <input
-                      className="rounded-2xl border border-surface-100 bg-surface-0 px-4 py-2 text-sm"
+                      className="rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm"
                       defaultValue="Especialista em Conteúdo"
                     />
                   </label>
                 </div>
               </div>
 
-              <div className="space-y-6 rounded-3xl border border-surface-100 bg-surface-0 p-6 shadow-sm">
+              <div className="space-y-6 rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
                 <div>
                   <h3 className="text-lg font-semibold">API Key</h3>
                   <p className="text-sm text-text-secondary">
@@ -282,7 +264,7 @@ export default function PublisherDashboard() {
                 <label className="grid gap-2 text-sm font-semibold">
                   Chave ativa
                   <input
-                    className="rounded-2xl border border-surface-100 bg-surface-50 px-4 py-2 text-sm"
+                    className="rounded-2xl border border-slate-200 bg-surface-50 px-4 py-2 text-sm"
                     defaultValue="pk_live_4f8c...a9d2"
                   />
                 </label>
@@ -302,7 +284,7 @@ export default function PublisherDashboard() {
                 {scheduleCards.map((card) => (
                   <div
                     key={card.title}
-                    className="rounded-3xl border border-surface-100 bg-surface-50 p-6"
+                    className="rounded-3xl border border-slate-100 bg-surface-50 p-6"
                   >
                     <h3 className="text-lg font-semibold">{card.title}</h3>
                     <p className="mt-2 text-sm text-text-secondary">{card.description}</p>
@@ -312,7 +294,7 @@ export default function PublisherDashboard() {
                   </div>
                 ))}
               </div>
-              <div className="rounded-3xl border border-surface-100 bg-surface-0 p-6 shadow-sm">
+              <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-semibold">Criar novo cronograma</h3>
                 <p className="mt-2 text-sm text-text-secondary">
                   Defina frequência, janela de publicação e template base.
@@ -321,10 +303,10 @@ export default function PublisherDashboard() {
                   <button className="rounded-full border border-brand-100 px-4 py-2 text-xs font-semibold text-brand-700">
                     Semanal
                   </button>
-                  <button className="rounded-full border border-surface-100 px-4 py-2 text-xs font-semibold text-text-secondary">
+                  <button className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-text-secondary">
                     Quinzenal
                   </button>
-                  <button className="rounded-full border border-surface-100 px-4 py-2 text-xs font-semibold text-text-secondary">
+                  <button className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-text-secondary">
                     Mensal
                   </button>
                 </div>
@@ -337,7 +319,7 @@ export default function PublisherDashboard() {
               {services.map((service) => (
                 <div
                   key={service.title}
-                  className="rounded-3xl border border-surface-100 bg-surface-50 p-6"
+                  className="rounded-3xl border border-slate-100 bg-surface-50 p-6"
                 >
                   <div className="flex items-start justify-between">
                     <div>
@@ -355,7 +337,7 @@ export default function PublisherDashboard() {
                     </span>
                   </div>
                   <button
-                    className="mt-6 rounded-full border border-surface-100 px-4 py-2 text-xs font-semibold text-text-secondary"
+                    className="mt-6 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-text-secondary"
                     type="button"
                   >
                     Configurar serviço
