@@ -1,0 +1,4 @@
+{
+  "/(dashboard)/dashboard/schedule/page": "app/(dashboard)/dashboard/schedule/page.js",
+  "/(dashboard)/dashboard/chat/page": "app/(dashboard)/dashboard/chat/page.js"
+}
